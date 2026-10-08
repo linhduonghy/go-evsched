@@ -1,0 +1,19 @@
+# binaries
+bin/
+dist/
+
+# IDE
+.idea/
+.vscode/
+
+# env
+.env
+
+# logs
+*.log
+
+# generated
+coverage.out
+
+# mac
+.DS_Store

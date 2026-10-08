@@ -1,0 +1,7 @@
+bin
+.build
+.git
+.idea
+.vscode
+tmp
+*.log

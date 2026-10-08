@@ -1,0 +1,58 @@
+service:
+  name: eveched
+  version: 1.0.0
+  environment: local
+
+timezone: Asia/Ho_Chi_Minh
+
+server:
+  port: 9020
+
+log:
+  level: info
+  format: text # Options: text | json
+
+http:
+  timeout: 30s
+
+db:
+  host: localhost
+  port: 5432
+  user: postgres
+  password: postgres
+  name: go-evsched
+  sslmode: disable
+  max_open_conns: 20
+  min_idle_conns: 5
+
+otel:
+  endpoint: http://127.0.0.1:4317
+  insecure: true
+  headers:
+    Authorization:
+  trace:
+    enabled: false
+  log:
+    enabled: false
+
+rabbitmq:
+  host: "127.0.0.1"
+  port: 5672
+  user: "guest"
+  pass: "guest"
+
+outbox:
+  poll_interval: 1s
+  
+job:
+  store:
+    misfire_threshold: 5s
+    publisher:
+      default_job:
+        exchange: evsched-default-x
+        routing_key: evsched-default-rk
+      workflow:
+        exchange: execute-workflow-x
+        routing_key: execute-workflow-rk
+
+
